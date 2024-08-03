@@ -3,7 +3,7 @@
 <h1>Password: {{ message[1] }}</h1>
 </template>
 <script>
-import axios from 'axios';
+import api from '@/services/api'
 export default {
     data(){
         return{
@@ -12,7 +12,7 @@ export default {
         
     },
     mounted() {
-        axios.get('http://localhost:5000/data')
+        api.get('/data')
         .then(response => {
             this.message = response.data;
         })

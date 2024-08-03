@@ -21,8 +21,7 @@
 </template>
   
 <script>
-import axios from 'axios';
-
+import api from '@/services/api'
 export default {
     data() {
         return {
@@ -34,7 +33,7 @@ export default {
         };
     },
     mounted() {
-        axios.get('http://localhost:5000')
+        api.get('/')
         .then(response => {
             this.message = response.data;
         })
@@ -44,7 +43,7 @@ export default {
     },
     methods: {
         senddata() {
-            axios.post('http://localhost:5000/send', {
+            api.post('/send', {
                 user: [this.sending, this.pass],
             })
            .then(response => {
@@ -57,7 +56,7 @@ export default {
             });
         },
         umumiy(){
-            axios.post('http://localhost:5000/umu', {
+            api.post('/umu', {
                 tonext : this.myum,
             }).then( myres => {
                 if(myres.status === 200){
